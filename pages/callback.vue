@@ -11,8 +11,8 @@ onMounted(async () => {
   try {
     await $auth0.handleRedirectCallback()
     const user = await $auth0.getUser()
+    const token = await $auth0.getTokenSilently()
     if (user) {
-      console.log(user);
       navigateTo('/profile')
     } else {
       navigateTo('/login')

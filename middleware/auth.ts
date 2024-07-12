@@ -1,9 +1,8 @@
-// middleware/auth.ts
 import { defineNuxtRouteMiddleware, navigateTo, useNuxtApp } from '#imports'
 
 export default defineNuxtRouteMiddleware((to, from) => {
-  const { $auth } = useNuxtApp()
-  if (!$auth.loggedIn) {
+  const { $auth0 } = useNuxtApp()
+  if (!$auth0.loggedIn) {
     return navigateTo('/login')
   }
 })
