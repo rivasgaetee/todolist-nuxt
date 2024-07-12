@@ -8,12 +8,24 @@ export const useAuthStore = defineStore('auth', {
   }),
   actions: {
     setUser(user: any) {
-      console.log('user', user);
+      localStorage.setItem('user', JSON.stringify(user))
       this.user = user
     },
     setToken(token: string) {
-      console.log('token', token);
+      localStorage.setItem('token', token)
       this.token = token
+    },
+    getUser() {
+      const user = localStorage.getItem('user')
+      if (user) {
+        this.user = JSON.parse(user)
+      }
+    },
+    getToken() {
+      const token = localStorage.getItem('token')
+      if (token) {
+        this.token = token
+      }
     },
     clearAuth() {
       this.user = null
