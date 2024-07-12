@@ -11,7 +11,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     clientId: config.public.auth0ClientId,
     authorizationParams: {
       scope: 'openid profile email',
-      redirect_uri: config.public.auth0CallbackUrl
+      redirect_uri: config.public.auth0CallbackUrl,
+      audience: config.public.auth0Audience
     },
   })
 

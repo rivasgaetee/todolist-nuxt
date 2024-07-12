@@ -14,10 +14,10 @@ onMounted(async () => {
   try {
     await $auth0.handleRedirectCallback()
     const user = await $auth0.getUser()
-    const token = await $auth0.getTokenSilently()
-    if (user && token) {
+    const accessToken = await $auth0.getTokenSilently()
+    if (user && accessToken) {
       authStore.setUser(user)
-      authStore.setToken(token)
+      authStore.setToken(accessToken)
       navigateTo('/profile')
     } else {
       navigateTo('/login')
